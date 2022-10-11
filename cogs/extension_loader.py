@@ -28,12 +28,12 @@ class ExtLoaderCog(commands.Cog):
         await ctx.channel.send(f"Unload Finished on EXT: {ext} {ctx.author.mention}")
 
     async def cog_command_error(self, ctx, error):
-        cogs = '```'
+        cogs = '```\n'
         for cog in self.bot.extensions.keys():
             cogs += cog + "\n"
         cogs += '```'
         if isinstance(error, discord.ext.commands.MissingRequiredArgument):
-            await ctx.channel.send(f"No EXT inputted: {ctx.author.mention}\n\nHere is a list of avaliable extensions:\n{cogs}")
+            await ctx.channel.send(f"No EXT inputted: {ctx.author.mention}\n\nHere is a list of avaliable extensions:\n {cogs}")
             return
         if isinstance(error, discord.ext.commands.errors.CommandInvokeError):
             error = error.original
