@@ -14,8 +14,8 @@ class MiscCog(commands.Cog):
     @app_commands.command(name="purge", description="Purge the amount of messages you would like")
     @app_commands.default_permissions(administrator=True)
     async def purge(self, itx: discord.Interaction, amount: int):
+        await itx.response.send_message(f"Purged {amount} messages", ephemeral=True)
         await itx.channel.purge(limit=amount)
-        await itx.response.send_message(f"{itx.user.mention} Purged {amount} messages")
 
         # display server stats in a cool way
     @app_commands.command(name="server", description="Server stats")
