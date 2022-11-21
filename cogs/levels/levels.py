@@ -11,13 +11,6 @@ class LevelsCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener()  # TODO: MAKE FUNCTIONAL
-    async def on_member_join(self, member):
-        with open(r"users.json", 'r') as f:
-            users = json.load(f)
-
-        await self.update_data(users, member)
-
     @commands.Cog.listener()
     async def on_message(self, message):
         with open(PATH + "levels.json", 'r') as f:
